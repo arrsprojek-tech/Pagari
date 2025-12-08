@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="id" class="h-full">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PAGARI</title>
+    <meta name="description" content="PAGARI — prototype fitur utama (nutrisi, pemantauan gula, diary, pengingat)" />
+    <!-- Tailwind CDN (warning about production is expected for this demo on GitHub Pages) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = { darkMode: 'class' }
+    </script>
+    <!-- React + ReactDOM + Babel for JSX in-browser (demo only) -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Chart.js UMD (global Chart) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <style>html, body, #root { height: 100%; }</style>
+  </head>
+  <body class="h-full bg-gradient-to-b from-green-50 to-white text-gray-900 dark:from-gray-900 dark:to-gray-950 dark:text-gray-100">
+    <div id="root"></div>
+    <script type="text/babel" src="./assets/app.jsx"></script>
+  </body>
+</html>
