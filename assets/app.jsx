@@ -262,8 +262,8 @@ function App() {
       if (raw) return JSON.parse(raw);
     } catch (e) {}
     return [
-      { id: 1, item: "Teh tawar", sugar: 0, date: toDateKey(new Date()) },
-      { id: 2, item: "Roti gandum", sugar: 3, date: toDateKey(new Date()) },
+/*      { id: 1, item: "Teh tawar", sugar: 0, date: toDateKey(new Date()) },
+      { id: 2, item: "Roti gandum", sugar: 3, date: toDateKey(new Date()) },*/
     ];
   });
   const [entry, setEntry] = useState({ id: null, item: "", sugar: "", date: toDateKey(new Date()) });
@@ -368,7 +368,6 @@ function App() {
           <div className="flex items-center gap-3">
             <img src="./assets/logo-pagari.png" alt="PAGARI" className="h-9 w-9 rounded-2xl object-contain bg-green-50" />
             <div className="font-extrabold text-xl tracking-tight">PAGARI</div>
-            <span className="ml-2 rounded-full bg-green-100 dark:bg-green-900/40 px-2 py-0.5 text-xs text-green-700 dark:text-green-200">BETA 0.0.1</span>
           </div>
           <div className="flex items-center gap-2">
             <Button className="bg-white dark:bg-gray-800" onClick={() => setDark(d => !d)}>{dark ? "Light" : "Dark"}</Button>
