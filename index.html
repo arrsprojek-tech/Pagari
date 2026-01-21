@@ -21,5 +21,47 @@
   <body class="h-full bg-gradient-to-b from-green-50 to-white text-gray-900 dark:from-gray-900 dark:to-gray-950 dark:text-gray-100">
     <div id="root"></div>
     <script type="text/babel" src="./assets/app.jsx"></script>
+
+    <!-- Temporary client-side fix: replace any visible text 'Prototype' with 'BETA 0.0.1'.
+         This uses a MutationObserver so it will update dynamic content rendered by the app too.
+         If you prefer a permanent fix, update assets/app.jsx to change the label there. -->
+    <script>
+      (function(){
+        function replaceTextInNode(node) {
+          if (!node) return;
+          if (node.nodeType === Node.TEXT_NODE) {
+            node.nodeValue = node.nodeValue.replace(/\bPrototype\b/g, 'BETA 0.0.1');
+            return;
+          }
+          node.childNodes && node.childNodes.forEach(replaceTextInNode);
+        }
+
+        // Replace existing text once DOM is ready
+        function runReplace() {
+          try { replaceTextInNode(document.body); } catch(e){}
+        }
+
+        // Observe future mutations (app renders) and replace text when new nodes appear
+        const observer = new MutationObserver((mutations) => {
+          mutations.forEach(m => {
+            m.addedNodes && m.addedNodes.forEach(replaceTextInNode);
+            if (m.type === 'characterData' && m.target) replaceTextInNode(m.target);
+          });
+        });
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', () => {
+            runReplace();
+            observer.observe(document.documentElement, { childList: true, subtree: true, characterData: true });
+          });
+        } else {
+          runReplace();
+          observer.observe(document.documentElement, { childList: true, subtree: true, characterData: true });
+        }
+
+        // Optional: stop observing after a short period to avoid overhead
+        setTimeout(() => observer.disconnect(), 30000);
+      })();
+    </script>
   </body>
 </html>
