@@ -190,9 +190,9 @@ function App() {
       if (raw) return JSON.parse(raw);
     } catch (e) {}
     return [
-      { id: 1, time: new Date(Date.now() - 86400000 * 3).toISOString(), value: 98 },
+/*      { id: 1, time: new Date(Date.now() - 86400000 * 3).toISOString(), value: 98 },
       { id: 2, time: new Date(Date.now() - 86400000 * 2).toISOString(), value: 112 },
-      { id: 3, time: new Date(Date.now() - 86400000 * 1).toISOString(), value: 126 },
+      { id: 3, time: new Date(Date.now() - 86400000 * 1).toISOString(), value: 126 }, */
     ];
   });
   const [gInput, setGInput] = useState({ id: null, value: "", when: toDateKey(new Date()) + "T08:00" });
